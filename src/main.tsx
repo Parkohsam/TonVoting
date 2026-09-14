@@ -1,0 +1,20 @@
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { WagmiProvider } from 'wagmi';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { wagmiConfig } from './config/wagmi';
+import './index.css';
+import App from './App';
+
+const queryClient = new QueryClient();
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    {/* Cast config to any to resolve minor @wagmi/core sub-dependency mismatch between wagmi and @reown/appkit */}
+    <WagmiProvider config={wagmiConfig as any}>
+      <QueryClientProvider client={queryClient}>
+        <App />
+      </QueryClientProvider>
+    </WagmiProvider>
+  </StrictMode>
+);

@@ -1,0 +1,1018 @@
+{
+  "network": "bohr",
+  "chainId": "968",
+  "contracts": {
+    "DevToken": {
+      "address": "0x223422aEAF60eb8Cf98D20AbA9AD463c585EbC5D",
+      "abi": [
+        {
+          "type": "constructor",
+          "stateMutability": "undefined",
+          "payable": false,
+          "inputs": []
+        },
+        {
+          "type": "error",
+          "name": "ERC20InsufficientAllowance",
+          "inputs": [
+            {
+              "type": "address",
+              "name": "spender"
+            },
+            {
+              "type": "uint256",
+              "name": "allowance"
+            },
+            {
+              "type": "uint256",
+              "name": "needed"
+            }
+          ]
+        },
+        {
+          "type": "error",
+          "name": "ERC20InsufficientBalance",
+          "inputs": [
+            {
+              "type": "address",
+              "name": "sender"
+            },
+            {
+              "type": "uint256",
+              "name": "balance"
+            },
+            {
+              "type": "uint256",
+              "name": "needed"
+            }
+          ]
+        },
+        {
+          "type": "error",
+          "name": "ERC20InvalidApprover",
+          "inputs": [
+            {
+              "type": "address",
+              "name": "approver"
+            }
+          ]
+        },
+        {
+          "type": "error",
+          "name": "ERC20InvalidReceiver",
+          "inputs": [
+            {
+              "type": "address",
+              "name": "receiver"
+            }
+          ]
+        },
+        {
+          "type": "error",
+          "name": "ERC20InvalidSender",
+          "inputs": [
+            {
+              "type": "address",
+              "name": "sender"
+            }
+          ]
+        },
+        {
+          "type": "error",
+          "name": "ERC20InvalidSpender",
+          "inputs": [
+            {
+              "type": "address",
+              "name": "spender"
+            }
+          ]
+        },
+        {
+          "type": "error",
+          "name": "OwnableInvalidOwner",
+          "inputs": [
+            {
+              "type": "address",
+              "name": "owner"
+            }
+          ]
+        },
+        {
+          "type": "error",
+          "name": "OwnableUnauthorizedAccount",
+          "inputs": [
+            {
+              "type": "address",
+              "name": "account"
+            }
+          ]
+        },
+        {
+          "type": "event",
+          "anonymous": false,
+          "name": "Approval",
+          "inputs": [
+            {
+              "type": "address",
+              "name": "owner",
+              "indexed": true
+            },
+            {
+              "type": "address",
+              "name": "spender",
+              "indexed": true
+            },
+            {
+              "type": "uint256",
+              "name": "value",
+              "indexed": false
+            }
+          ]
+        },
+        {
+          "type": "event",
+          "anonymous": false,
+          "name": "FaucetClaimed",
+          "inputs": [
+            {
+              "type": "address",
+              "name": "recipient",
+              "indexed": true
+            },
+            {
+              "type": "uint256",
+              "name": "amount",
+              "indexed": false
+            }
+          ]
+        },
+        {
+          "type": "event",
+          "anonymous": false,
+          "name": "OwnershipTransferred",
+          "inputs": [
+            {
+              "type": "address",
+              "name": "previousOwner",
+              "indexed": true
+            },
+            {
+              "type": "address",
+              "name": "newOwner",
+              "indexed": true
+            }
+          ]
+        },
+        {
+          "type": "event",
+          "anonymous": false,
+          "name": "Transfer",
+          "inputs": [
+            {
+              "type": "address",
+              "name": "from",
+              "indexed": true
+            },
+            {
+              "type": "address",
+              "name": "to",
+              "indexed": true
+            },
+            {
+              "type": "uint256",
+              "name": "value",
+              "indexed": false
+            }
+          ]
+        },
+        {
+          "type": "function",
+          "name": "FAUCET_AMOUNT",
+          "constant": true,
+          "stateMutability": "view",
+          "payable": false,
+          "inputs": [],
+          "outputs": [
+            {
+              "type": "uint256",
+              "name": ""
+            }
+          ]
+        },
+        {
+          "type": "function",
+          "name": "FAUCET_COOLDOWN",
+          "constant": true,
+          "stateMutability": "view",
+          "payable": false,
+          "inputs": [],
+          "outputs": [
+            {
+              "type": "uint256",
+              "name": ""
+            }
+          ]
+        },
+        {
+          "type": "function",
+          "name": "allowance",
+          "constant": true,
+          "stateMutability": "view",
+          "payable": false,
+          "inputs": [
+            {
+              "type": "address",
+              "name": "owner"
+            },
+            {
+              "type": "address",
+              "name": "spender"
+            }
+          ],
+          "outputs": [
+            {
+              "type": "uint256",
+              "name": ""
+            }
+          ]
+        },
+        {
+          "type": "function",
+          "name": "approve",
+          "constant": false,
+          "payable": false,
+          "inputs": [
+            {
+              "type": "address",
+              "name": "spender"
+            },
+            {
+              "type": "uint256",
+              "name": "value"
+            }
+          ],
+          "outputs": [
+            {
+              "type": "bool",
+              "name": ""
+            }
+          ]
+        },
+        {
+          "type": "function",
+          "name": "balanceOf",
+          "constant": true,
+          "stateMutability": "view",
+          "payable": false,
+          "inputs": [
+            {
+              "type": "address",
+              "name": "account"
+            }
+          ],
+          "outputs": [
+            {
+              "type": "uint256",
+              "name": ""
+            }
+          ]
+        },
+        {
+          "type": "function",
+          "name": "decimals",
+          "constant": true,
+          "stateMutability": "view",
+          "payable": false,
+          "inputs": [],
+          "outputs": [
+            {
+              "type": "uint8",
+              "name": ""
+            }
+          ]
+        },
+        {
+          "type": "function",
+          "name": "faucet",
+          "constant": false,
+          "payable": false,
+          "inputs": [],
+          "outputs": []
+        },
+        {
+          "type": "function",
+          "name": "lastFaucetClaim",
+          "constant": true,
+          "stateMutability": "view",
+          "payable": false,
+          "inputs": [
+            {
+              "type": "address",
+              "name": ""
+            }
+          ],
+          "outputs": [
+            {
+              "type": "uint256",
+              "name": ""
+            }
+          ]
+        },
+        {
+          "type": "function",
+          "name": "mint",
+          "constant": false,
+          "payable": false,
+          "inputs": [
+            {
+              "type": "address",
+              "name": "to"
+            },
+            {
+              "type": "uint256",
+              "name": "amount"
+            }
+          ],
+          "outputs": []
+        },
+        {
+          "type": "function",
+          "name": "name",
+          "constant": true,
+          "stateMutability": "view",
+          "payable": false,
+          "inputs": [],
+          "outputs": [
+            {
+              "type": "string",
+              "name": ""
+            }
+          ]
+        },
+        {
+          "type": "function",
+          "name": "owner",
+          "constant": true,
+          "stateMutability": "view",
+          "payable": false,
+          "inputs": [],
+          "outputs": [
+            {
+              "type": "address",
+              "name": ""
+            }
+          ]
+        },
+        {
+          "type": "function",
+          "name": "renounceOwnership",
+          "constant": false,
+          "payable": false,
+          "inputs": [],
+          "outputs": []
+        },
+        {
+          "type": "function",
+          "name": "symbol",
+          "constant": true,
+          "stateMutability": "view",
+          "payable": false,
+          "inputs": [],
+          "outputs": [
+            {
+              "type": "string",
+              "name": ""
+            }
+          ]
+        },
+        {
+          "type": "function",
+          "name": "totalSupply",
+          "constant": true,
+          "stateMutability": "view",
+          "payable": false,
+          "inputs": [],
+          "outputs": [
+            {
+              "type": "uint256",
+              "name": ""
+            }
+          ]
+        },
+        {
+          "type": "function",
+          "name": "transfer",
+          "constant": false,
+          "payable": false,
+          "inputs": [
+            {
+              "type": "address",
+              "name": "to"
+            },
+            {
+              "type": "uint256",
+              "name": "value"
+            }
+          ],
+          "outputs": [
+            {
+              "type": "bool",
+              "name": ""
+            }
+          ]
+        },
+        {
+          "type": "function",
+          "name": "transferFrom",
+          "constant": false,
+          "payable": false,
+          "inputs": [
+            {
+              "type": "address",
+              "name": "from"
+            },
+            {
+              "type": "address",
+              "name": "to"
+            },
+            {
+              "type": "uint256",
+              "name": "value"
+            }
+          ],
+          "outputs": [
+            {
+              "type": "bool",
+              "name": ""
+            }
+          ]
+        },
+        {
+          "type": "function",
+          "name": "transferOwnership",
+          "constant": false,
+          "payable": false,
+          "inputs": [
+            {
+              "type": "address",
+              "name": "newOwner"
+            }
+          ],
+          "outputs": []
+        }
+      ]
+    },
+    "TokenVote": {
+      "address": "0xaD8959621A36Dd43729B0B8d6C45b47Db9192659",
+      "abi": [
+        {
+          "type": "constructor",
+          "stateMutability": "undefined",
+          "payable": false,
+          "inputs": [
+            {
+              "type": "address",
+              "name": "_devTokenAddress"
+            }
+          ]
+        },
+        {
+          "type": "error",
+          "name": "OwnableInvalidOwner",
+          "inputs": [
+            {
+              "type": "address",
+              "name": "owner"
+            }
+          ]
+        },
+        {
+          "type": "error",
+          "name": "OwnableUnauthorizedAccount",
+          "inputs": [
+            {
+              "type": "address",
+              "name": "account"
+            }
+          ]
+        },
+        {
+          "type": "event",
+          "anonymous": false,
+          "name": "OwnershipTransferred",
+          "inputs": [
+            {
+              "type": "address",
+              "name": "previousOwner",
+              "indexed": true
+            },
+            {
+              "type": "address",
+              "name": "newOwner",
+              "indexed": true
+            }
+          ]
+        },
+        {
+          "type": "event",
+          "anonymous": false,
+          "name": "ProposalCreated",
+          "inputs": [
+            {
+              "type": "uint256",
+              "name": "id",
+              "indexed": true
+            },
+            {
+              "type": "string",
+              "name": "title",
+              "indexed": false
+            },
+            {
+              "type": "address",
+              "name": "proposer",
+              "indexed": true
+            },
+            {
+              "type": "uint256",
+              "name": "startTime",
+              "indexed": false
+            },
+            {
+              "type": "uint256",
+              "name": "endTime",
+              "indexed": false
+            }
+          ]
+        },
+        {
+          "type": "event",
+          "anonymous": false,
+          "name": "ProposalThresholdUpdated",
+          "inputs": [
+            {
+              "type": "uint256",
+              "name": "newThreshold",
+              "indexed": false
+            }
+          ]
+        },
+        {
+          "type": "event",
+          "anonymous": false,
+          "name": "VoteCast",
+          "inputs": [
+            {
+              "type": "uint256",
+              "name": "proposalId",
+              "indexed": true
+            },
+            {
+              "type": "address",
+              "name": "voter",
+              "indexed": true
+            },
+            {
+              "type": "uint8",
+              "name": "voteType",
+              "indexed": false
+            },
+            {
+              "type": "uint256",
+              "name": "weight",
+              "indexed": false
+            }
+          ]
+        },
+        {
+          "type": "function",
+          "name": "castVote",
+          "constant": false,
+          "payable": false,
+          "inputs": [
+            {
+              "type": "uint256",
+              "name": "proposalId"
+            },
+            {
+              "type": "uint8",
+              "name": "voteType"
+            }
+          ],
+          "outputs": []
+        },
+        {
+          "type": "function",
+          "name": "createProposal",
+          "constant": false,
+          "payable": false,
+          "inputs": [
+            {
+              "type": "string",
+              "name": "title"
+            },
+            {
+              "type": "string",
+              "name": "description"
+            },
+            {
+              "type": "uint256",
+              "name": "durationInSeconds"
+            }
+          ],
+          "outputs": [
+            {
+              "type": "uint256",
+              "name": ""
+            }
+          ]
+        },
+        {
+          "type": "function",
+          "name": "devToken",
+          "constant": true,
+          "stateMutability": "view",
+          "payable": false,
+          "inputs": [],
+          "outputs": [
+            {
+              "type": "address",
+              "name": ""
+            }
+          ]
+        },
+        {
+          "type": "function",
+          "name": "getAllProposals",
+          "constant": true,
+          "stateMutability": "view",
+          "payable": false,
+          "inputs": [],
+          "outputs": [
+            {
+              "type": "tuple[]",
+              "name": "allProposals",
+              "components": [
+                {
+                  "type": "uint256",
+                  "name": "id"
+                },
+                {
+                  "type": "string",
+                  "name": "title"
+                },
+                {
+                  "type": "string",
+                  "name": "description"
+                },
+                {
+                  "type": "address",
+                  "name": "proposer"
+                },
+                {
+                  "type": "uint256",
+                  "name": "startTime"
+                },
+                {
+                  "type": "uint256",
+                  "name": "endTime"
+                },
+                {
+                  "type": "uint256",
+                  "name": "forVotes"
+                },
+                {
+                  "type": "uint256",
+                  "name": "againstVotes"
+                },
+                {
+                  "type": "uint256",
+                  "name": "abstainVotes"
+                },
+                {
+                  "type": "uint256",
+                  "name": "totalVoters"
+                }
+              ]
+            },
+            {
+              "type": "uint8[]",
+              "name": "statuses"
+            }
+          ]
+        },
+        {
+          "type": "function",
+          "name": "getProposal",
+          "constant": true,
+          "stateMutability": "view",
+          "payable": false,
+          "inputs": [
+            {
+              "type": "uint256",
+              "name": "proposalId"
+            }
+          ],
+          "outputs": [
+            {
+              "type": "tuple",
+              "name": "",
+              "components": [
+                {
+                  "type": "uint256",
+                  "name": "id"
+                },
+                {
+                  "type": "string",
+                  "name": "title"
+                },
+                {
+                  "type": "string",
+                  "name": "description"
+                },
+                {
+                  "type": "address",
+                  "name": "proposer"
+                },
+                {
+                  "type": "uint256",
+                  "name": "startTime"
+                },
+                {
+                  "type": "uint256",
+                  "name": "endTime"
+                },
+                {
+                  "type": "uint256",
+                  "name": "forVotes"
+                },
+                {
+                  "type": "uint256",
+                  "name": "againstVotes"
+                },
+                {
+                  "type": "uint256",
+                  "name": "abstainVotes"
+                },
+                {
+                  "type": "uint256",
+                  "name": "totalVoters"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "function",
+          "name": "getProposalCount",
+          "constant": true,
+          "stateMutability": "view",
+          "payable": false,
+          "inputs": [],
+          "outputs": [
+            {
+              "type": "uint256",
+              "name": ""
+            }
+          ]
+        },
+        {
+          "type": "function",
+          "name": "getProposalStatus",
+          "constant": true,
+          "stateMutability": "view",
+          "payable": false,
+          "inputs": [
+            {
+              "type": "uint256",
+              "name": "proposalId"
+            }
+          ],
+          "outputs": [
+            {
+              "type": "uint8",
+              "name": ""
+            }
+          ]
+        },
+        {
+          "type": "function",
+          "name": "getVoterReceipt",
+          "constant": true,
+          "stateMutability": "view",
+          "payable": false,
+          "inputs": [
+            {
+              "type": "uint256",
+              "name": "proposalId"
+            },
+            {
+              "type": "address",
+              "name": "voter"
+            }
+          ],
+          "outputs": [
+            {
+              "type": "bool",
+              "name": "voted"
+            },
+            {
+              "type": "uint8",
+              "name": "voteType"
+            },
+            {
+              "type": "uint256",
+              "name": "weight"
+            }
+          ]
+        },
+        {
+          "type": "function",
+          "name": "hasVoted",
+          "constant": true,
+          "stateMutability": "view",
+          "payable": false,
+          "inputs": [
+            {
+              "type": "uint256",
+              "name": ""
+            },
+            {
+              "type": "address",
+              "name": ""
+            }
+          ],
+          "outputs": [
+            {
+              "type": "bool",
+              "name": ""
+            }
+          ]
+        },
+        {
+          "type": "function",
+          "name": "owner",
+          "constant": true,
+          "stateMutability": "view",
+          "payable": false,
+          "inputs": [],
+          "outputs": [
+            {
+              "type": "address",
+              "name": ""
+            }
+          ]
+        },
+        {
+          "type": "function",
+          "name": "proposalThreshold",
+          "constant": true,
+          "stateMutability": "view",
+          "payable": false,
+          "inputs": [],
+          "outputs": [
+            {
+              "type": "uint256",
+              "name": ""
+            }
+          ]
+        },
+        {
+          "type": "function",
+          "name": "proposals",
+          "constant": true,
+          "stateMutability": "view",
+          "payable": false,
+          "inputs": [
+            {
+              "type": "uint256",
+              "name": ""
+            }
+          ],
+          "outputs": [
+            {
+              "type": "uint256",
+              "name": "id"
+            },
+            {
+              "type": "string",
+              "name": "title"
+            },
+            {
+              "type": "string",
+              "name": "description"
+            },
+            {
+              "type": "address",
+              "name": "proposer"
+            },
+            {
+              "type": "uint256",
+              "name": "startTime"
+            },
+            {
+              "type": "uint256",
+              "name": "endTime"
+            },
+            {
+              "type": "uint256",
+              "name": "forVotes"
+            },
+            {
+              "type": "uint256",
+              "name": "againstVotes"
+            },
+            {
+              "type": "uint256",
+              "name": "abstainVotes"
+            },
+            {
+              "type": "uint256",
+              "name": "totalVoters"
+            }
+          ]
+        },
+        {
+          "type": "function",
+          "name": "renounceOwnership",
+          "constant": false,
+          "payable": false,
+          "inputs": [],
+          "outputs": []
+        },
+        {
+          "type": "function",
+          "name": "setProposalThreshold",
+          "constant": false,
+          "payable": false,
+          "inputs": [
+            {
+              "type": "uint256",
+              "name": "newThreshold"
+            }
+          ],
+          "outputs": []
+        },
+        {
+          "type": "function",
+          "name": "transferOwnership",
+          "constant": false,
+          "payable": false,
+          "inputs": [
+            {
+              "type": "address",
+              "name": "newOwner"
+            }
+          ],
+          "outputs": []
+        },
+        {
+          "type": "function",
+          "name": "voterVoteType",
+          "constant": true,
+          "stateMutability": "view",
+          "payable": false,
+          "inputs": [
+            {
+              "type": "uint256",
+              "name": ""
+            },
+            {
+              "type": "address",
+              "name": ""
+            }
+          ],
+          "outputs": [
+            {
+              "type": "uint8",
+              "name": ""
+            }
+          ]
+        },
+        {
+          "type": "function",
+          "name": "voterWeight",
+          "constant": true,
+          "stateMutability": "view",
+          "payable": false,
+          "inputs": [
+            {
+              "type": "uint256",
+              "name": ""
+            },
+            {
+              "type": "address",
+              "name": ""
+            }
+          ],
+          "outputs": [
+            {
+              "type": "uint256",
+              "name": ""
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
