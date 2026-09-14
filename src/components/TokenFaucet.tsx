@@ -75,36 +75,41 @@ export const TokenFaucet: React.FC = () => {
     }
   };
 
-  const formattedBalance = balance !== undefined ? Number(formatEther(balance as bigint)).toLocaleString(undefined, { maximumFractionDigits: 2 }) : '0.00';
+  const formattedBalance =
+    balance !== undefined
+      ? Number(formatEther(balance as bigint)).toLocaleString(undefined, {
+          maximumFractionDigits: 2,
+        })
+      : '0.00';
 
   if (!isConnected) {
     return (
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-indigo-950/40 via-slate-900/60 to-purple-950/40 border border-indigo-500/20 p-8 sm:p-10 shadow-2xl">
-        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
-          <div className="space-y-3 max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-500/15 border border-indigo-500/30 text-indigo-300 text-xs font-semibold">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-indigo-950/40 via-slate-900/60 to-purple-950/40 border border-indigo-500/20 p-5 sm:p-8 md:p-10 shadow-xl">
+        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-5 sm:gap-6">
+          <div className="space-y-2.5 max-w-2xl">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-500/15 border border-indigo-500/30 text-indigo-300 text-[11px] sm:text-xs font-semibold">
               <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
-              Welcome to TokenVote On-Chain Governance
+              Welcome to TokenVote
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            <h2 className="text-xl sm:text-3xl font-extrabold text-white tracking-tight leading-snug">
               Decentralized Governance Powered by DEV Tokens
             </h2>
-            <p className="text-slate-400 text-sm leading-relaxed">
-              Connect your MetaMask wallet to claim free test DEV tokens, create community proposals, and cast token-weighted votes on Bohr Testnet.
+            <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
+              Connect your MetaMask wallet to claim free test DEV tokens, create community proposals, and cast token-weighted votes.
             </p>
-            <div className="flex flex-wrap items-center gap-4 pt-2 text-xs text-slate-400 font-medium">
+            <div className="flex flex-wrap items-center gap-2.5 sm:gap-4 pt-1.5 text-[11px] sm:text-xs text-slate-400 font-medium">
               <span className="flex items-center gap-1.5 text-slate-300">
                 <span className="w-1.5 h-1.5 rounded-full bg-indigo-400" /> 1 DEV = 1 Vote
               </span>
               <span className="flex items-center gap-1.5 text-slate-300">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" /> Free Testnet Faucet
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" /> Test Faucet
               </span>
               <span className="flex items-center gap-1.5 text-slate-300">
-                <span className="w-1.5 h-1.5 rounded-full bg-purple-400" /> Bohr Testnet (Chain 968)
+                <span className="w-1.5 h-1.5 rounded-full bg-purple-400" /> On-Chain Voting
               </span>
             </div>
           </div>
-          <div className="flex-shrink-0 pt-2 lg:pt-0">
+          <div className="flex-shrink-0 pt-1 lg:pt-0 w-full sm:w-auto">
             <appkit-button />
           </div>
         </div>
@@ -115,39 +120,39 @@ export const TokenFaucet: React.FC = () => {
   const isClaiming = isWritePending || isTxConfirming;
 
   return (
-    <div className="relative overflow-hidden rounded-2xl bg-gradient-to-b from-slate-900/90 to-slate-950/90 border border-slate-800 shadow-xl p-6">
+    <div className="relative overflow-hidden rounded-2xl bg-gradient-to-b from-slate-900/90 to-slate-950/90 border border-slate-800 shadow-xl p-4 sm:p-6">
       {/* Decorative gradient glow */}
-      <div className="absolute top-0 right-0 -mt-8 -mr-8 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 -mb-8 -ml-8 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-0 -mt-8 -mr-8 w-48 sm:w-64 h-48 sm:h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 -mb-8 -ml-8 w-48 sm:w-64 h-48 sm:h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div className="relative z-10 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-5 sm:gap-6">
         {/* Left: User Balance & Voting Weight */}
-        <div className="flex items-center gap-5">
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-indigo-600 to-emerald-500 p-0.5 shadow-md shadow-indigo-500/20">
-            <div className="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center">
-              <Coins className="w-7 h-7 text-indigo-400" />
+        <div className="flex items-center gap-3.5 sm:gap-5">
+          <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-gradient-to-tr from-indigo-600 to-emerald-500 p-0.5 shadow-md shadow-indigo-500/20 flex-shrink-0">
+            <div className="w-full h-full bg-slate-950 rounded-[10px] sm:rounded-[14px] flex items-center justify-center">
+              <Coins className="w-5 h-5 sm:w-7 sm:h-7 text-indigo-400" />
             </div>
           </div>
           <div>
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-medium uppercase tracking-wider text-slate-400">
-                Your Governance Balance
+            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+              <span className="text-[10px] sm:text-xs font-medium uppercase tracking-wider text-slate-400">
+                Your DEV Balance
               </span>
               <button
                 onClick={handleAddTokenToMetaMask}
                 title="Add DEV to MetaMask"
-                className="inline-flex items-center gap-1 text-[11px] text-indigo-400 hover:text-indigo-300 transition-colors"
+                className="inline-flex items-center gap-1 text-[10px] sm:text-[11px] text-indigo-400 hover:text-indigo-300 transition-colors"
               >
                 <PlusCircle className="w-3 h-3" />
                 Add to MetaMask
               </button>
             </div>
-            <div className="flex items-baseline gap-2 mt-0.5">
-              <span className="text-3xl font-extrabold text-white tracking-tight">
+            <div className="flex flex-wrap items-baseline gap-1.5 sm:gap-2 mt-0.5">
+              <span className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
                 {isBalanceLoading ? '...' : formattedBalance}
               </span>
-              <span className="text-sm font-bold text-indigo-400">DEV</span>
-              <span className="text-xs text-slate-500 ml-1">
+              <span className="text-xs sm:text-sm font-bold text-indigo-400">DEV</span>
+              <span className="text-[11px] sm:text-xs text-slate-500 block sm:inline">
                 (= {formattedBalance} Voting Power)
               </span>
             </div>
@@ -155,11 +160,11 @@ export const TokenFaucet: React.FC = () => {
         </div>
 
         {/* Right: Test Faucet Action */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto">
+        <div className="w-full md:w-auto">
           <button
             onClick={handleClaimFaucet}
             disabled={isClaiming}
-            className="flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 disabled:opacity-50 disabled:cursor-not-allowed text-white text-sm font-semibold px-5 py-2.5 rounded-xl shadow-lg shadow-indigo-600/20 transition-all active:scale-[0.98]"
+            className="w-full md:w-auto flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 disabled:opacity-50 disabled:cursor-not-allowed text-white text-xs sm:text-sm font-semibold px-4 sm:px-5 py-3 sm:py-2.5 rounded-xl shadow-lg shadow-indigo-600/20 transition-all active:scale-[0.98]"
           >
             {isClaiming ? (
               <>
@@ -178,7 +183,7 @@ export const TokenFaucet: React.FC = () => {
 
       {/* Success Notification */}
       {claimStatus && (
-        <div className="mt-4 flex items-center gap-2 text-xs text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-2 rounded-lg">
+        <div className="mt-3.5 sm:mt-4 flex items-center gap-2 text-xs text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-2 rounded-lg">
           <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
           <span>{claimStatus}</span>
         </div>
@@ -186,7 +191,7 @@ export const TokenFaucet: React.FC = () => {
 
       {/* Error Notification */}
       {writeError && (
-        <div className="mt-4 flex items-center gap-2 text-xs text-rose-400 bg-rose-500/10 border border-rose-500/20 px-3 py-2 rounded-lg">
+        <div className="mt-3.5 sm:mt-4 flex items-center gap-2 text-xs text-rose-400 bg-rose-500/10 border border-rose-500/20 px-3 py-2 rounded-lg">
           <AlertCircle className="w-4 h-4 text-rose-400 flex-shrink-0" />
           <span>
             {writeError.message.includes('cooldown')

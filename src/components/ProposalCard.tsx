@@ -105,32 +105,32 @@ export const ProposalCard: React.FC<ProposalCardProps> = ({
   const isActive = status === 0 && !isExpired;
 
   return (
-    <div className="rounded-2xl bg-slate-900/90 border border-slate-800/90 hover:border-slate-700/80 transition-all p-6 shadow-xl flex flex-col justify-between">
+    <div className="rounded-2xl bg-slate-900/90 border border-slate-800/90 hover:border-slate-700/80 transition-all p-4 sm:p-6 shadow-xl flex flex-col justify-between">
       <div>
         {/* Top bar: ID, Status, Deadline */}
-        <div className="flex items-center justify-between gap-2 mb-3">
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-mono font-bold px-2 py-0.5 rounded-md bg-slate-800 text-slate-300">
+        <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <span className="text-[11px] sm:text-xs font-mono font-bold px-2 py-0.5 rounded-md bg-slate-800 text-slate-300">
               #{proposalIdNum}
             </span>
             {/* Status Badge */}
             {isActive ? (
-              <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              <span className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-semibold px-2 sm:px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                 Active
               </span>
             ) : status === 1 ? (
-              <span className="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
+              <span className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-semibold px-2 sm:px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
                 <CheckCircle className="w-3.5 h-3.5" />
                 Passed
               </span>
             ) : status === 2 ? (
-              <span className="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-0.5 rounded-full bg-rose-500/10 text-rose-400 border border-rose-500/20">
+              <span className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-semibold px-2 sm:px-2.5 py-0.5 rounded-full bg-rose-500/10 text-rose-400 border border-rose-500/20">
                 <XCircle className="w-3.5 h-3.5" />
                 Rejected
               </span>
             ) : (
-              <span className="inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">
+              <span className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-semibold px-2 sm:px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">
                 <MinusCircle className="w-3.5 h-3.5" />
                 Tied
               </span>
@@ -138,8 +138,8 @@ export const ProposalCard: React.FC<ProposalCardProps> = ({
           </div>
 
           {/* Time Remaining */}
-          <div className="flex items-center gap-1.5 text-xs text-slate-400">
-            <Clock className="w-3.5 h-3.5 text-slate-500" />
+          <div className="flex items-center gap-1.5 text-[11px] sm:text-xs text-slate-400">
+            <Clock className="w-3.5 h-3.5 text-slate-500 flex-shrink-0" />
             <span className={isActive ? 'text-amber-300 font-medium' : 'text-slate-500'}>
               {timeLeft}
             </span>
@@ -147,13 +147,13 @@ export const ProposalCard: React.FC<ProposalCardProps> = ({
         </div>
 
         {/* Proposal Title */}
-        <h3 className="text-lg font-bold text-white tracking-tight leading-snug line-clamp-2">
+        <h3 className="text-base sm:text-lg font-bold text-white tracking-tight leading-snug line-clamp-2">
           {proposal.title}
         </h3>
 
         {/* Proposer details */}
-        <div className="flex items-center gap-2 mt-2 text-xs text-slate-400">
-          <User className="w-3.5 h-3.5 text-slate-500" />
+        <div className="flex items-center gap-1.5 sm:gap-2 mt-2 text-[11px] sm:text-xs text-slate-400">
+          <User className="w-3.5 h-3.5 text-slate-500 flex-shrink-0" />
           <span>By:</span>
           <button
             onClick={copyProposer}
@@ -166,18 +166,18 @@ export const ProposalCard: React.FC<ProposalCardProps> = ({
         </div>
 
         {/* Description */}
-        <p className="mt-3 text-sm text-slate-300/90 line-clamp-3 leading-relaxed">
+        <p className="mt-2.5 sm:mt-3 text-xs sm:text-sm text-slate-300/90 line-clamp-3 leading-relaxed">
           {proposal.description}
         </p>
 
         {/* Vote Results Progress Bar */}
-        <div className="mt-5 space-y-2">
-          <div className="flex items-center justify-between text-xs text-slate-400 font-medium">
+        <div className="mt-4 sm:mt-5 space-y-2">
+          <div className="flex items-center justify-between text-[11px] sm:text-xs text-slate-400 font-medium">
             <span>Results ({proposal.totalVoters.toString()} Voters)</span>
             <span>{totalVotesNum.toLocaleString()} DEV Total</span>
           </div>
 
-          <div className="h-2.5 w-full bg-slate-950 rounded-full overflow-hidden flex">
+          <div className="h-2 sm:h-2.5 w-full bg-slate-950 rounded-full overflow-hidden flex">
             <div
               style={{ width: `${forPct}%` }}
               className="bg-emerald-500 h-full transition-all duration-500"
@@ -196,30 +196,30 @@ export const ProposalCard: React.FC<ProposalCardProps> = ({
           </div>
 
           {/* Breakdown Pills */}
-          <div className="grid grid-cols-3 gap-2 pt-1 text-xs">
-            <div className="bg-slate-950/60 border border-slate-800/80 rounded-lg p-2 text-center">
-              <div className="text-emerald-400 font-bold">{forPct}%</div>
-              <div className="text-[10px] text-slate-400">For ({forNum.toFixed(0)})</div>
+          <div className="grid grid-cols-3 gap-1.5 sm:gap-2 pt-1 text-[11px] sm:text-xs">
+            <div className="bg-slate-950/60 border border-slate-800/80 rounded-lg p-1.5 sm:p-2 text-center">
+              <div className="text-emerald-400 font-bold text-xs sm:text-sm">{forPct}%</div>
+              <div className="text-[9px] sm:text-[10px] text-slate-400 truncate">For ({forNum.toFixed(0)})</div>
             </div>
-            <div className="bg-slate-950/60 border border-slate-800/80 rounded-lg p-2 text-center">
-              <div className="text-rose-400 font-bold">{againstPct}%</div>
-              <div className="text-[10px] text-slate-400">Against ({againstNum.toFixed(0)})</div>
+            <div className="bg-slate-950/60 border border-slate-800/80 rounded-lg p-1.5 sm:p-2 text-center">
+              <div className="text-rose-400 font-bold text-xs sm:text-sm">{againstPct}%</div>
+              <div className="text-[9px] sm:text-[10px] text-slate-400 truncate">Against ({againstNum.toFixed(0)})</div>
             </div>
-            <div className="bg-slate-950/60 border border-slate-800/80 rounded-lg p-2 text-center">
-              <div className="text-amber-400 font-bold">{abstainPct}%</div>
-              <div className="text-[10px] text-slate-400">Abstain ({abstainNum.toFixed(0)})</div>
+            <div className="bg-slate-950/60 border border-slate-800/80 rounded-lg p-1.5 sm:p-2 text-center">
+              <div className="text-amber-400 font-bold text-xs sm:text-sm">{abstainPct}%</div>
+              <div className="text-[9px] sm:text-[10px] text-slate-400 truncate">Abstain ({abstainNum.toFixed(0)})</div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Footer / User Voting Action */}
-      <div className="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between">
+      <div className="mt-5 sm:mt-6 pt-3.5 sm:pt-4 border-t border-slate-800/80 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
         {hasVoted ? (
           <div className="flex items-center gap-2 text-xs">
             <span className="text-slate-400">You voted:</span>
             <span
-              className={`font-semibold px-2 py-0.5 rounded text-xs ${
+              className={`font-semibold px-2 py-0.5 rounded text-[11px] sm:text-xs ${
                 userVoteType === 1
                   ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
                   : userVoteType === 0
@@ -231,11 +231,11 @@ export const ProposalCard: React.FC<ProposalCardProps> = ({
             </span>
           </div>
         ) : isActive ? (
-          <div className="text-xs text-slate-400">
+          <div className="text-[11px] sm:text-xs text-slate-400">
             Voting open to all DEV holders
           </div>
         ) : (
-          <div className="text-xs text-slate-500">
+          <div className="text-[11px] sm:text-xs text-slate-500">
             Voting session closed
           </div>
         )}
@@ -245,7 +245,7 @@ export const ProposalCard: React.FC<ProposalCardProps> = ({
           <button
             onClick={() => onOpenVote(proposalIdNum, proposal.title)}
             disabled={!isConnected}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-500 shadow-md shadow-indigo-600/20 transition-all active:scale-[0.98] disabled:opacity-50"
+            className="w-full sm:w-auto flex items-center justify-center gap-1.5 px-4 py-2.5 sm:py-2 rounded-xl text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-500 shadow-md shadow-indigo-600/20 transition-all active:scale-[0.98] disabled:opacity-50"
           >
             <Vote className="w-3.5 h-3.5" />
             <span>Vote Now</span>
