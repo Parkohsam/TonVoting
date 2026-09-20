@@ -1,6 +1,8 @@
 import React from 'react';
-import type { ProposalData } from './ProposalCard';
+import { useChainId } from 'wagmi';
+import { botchainMainnet, bohrTestnet } from '../config/chains';
 import { Vote, CheckCircle, Clock, Network } from 'lucide-react';
+import type { ProposalData } from './ProposalCard';
 
 interface StatsOverviewProps {
   proposals: ProposalData[];
@@ -11,6 +13,10 @@ export const StatsOverview: React.FC<StatsOverviewProps> = ({
   proposals,
   statuses,
 }) => {
+  const chainId = useChainId();
+  const isBotchain = chainId === botchainMainnet.id;
+  const isBohr = chainId === bohrTestnet.id;
+  const networkLabel = isBotchain ? 'BotChain / Mainnet' : isBohr ? 'Bohr / Testnet' : chainId === 31337 ? 'Localhost' : `Chain ${chainId}`;
   const totalProposals = proposals.length;
   const activeProposals = statuses.filter((s) => s === 0).length;
   const passedProposals = statuses.filter((s) => s === 1).length;
@@ -61,8 +67,8 @@ export const StatsOverview: React.FC<StatsOverviewProps> = ({
             <Network className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           </div>
         </div>
-        <div className="mt-1.5 sm:mt-2 text-lg sm:text-xl font-bold text-white truncate">Bohr / Testnet</div>
-        <div className="mt-0.5 text-[10px] sm:text-[11px] text-purple-400/90 font-mono">Gas: BOT / ETH</div>
+        <div className="mt-1.5 sm:mt-2 text-lg sm:text-xl font-bold text-white truncate">{networkLabel}</div>
+        <div className="mt-0.5 text-[10px] sm:text-[11px] text-purple-400/90 font-mono">Gas: BOT {isBotchain && '(677)'}</div>
       </div>
     </div>
   );

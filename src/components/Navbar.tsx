@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAccount, useChainId, useSwitchChain } from 'wagmi';
-import { bohrTestnet, sepolia } from '../config/chains';
+import { bohrTestnet, botchainMainnet, sepolia } from '../config/chains';
 import { Vote, ExternalLink, Globe } from 'lucide-react';
 
 export const Navbar: React.FC = () => {
@@ -8,12 +8,13 @@ export const Navbar: React.FC = () => {
   const chainId = useChainId();
   const { switchChain } = useSwitchChain();
 
+  const isBotchain = chainId === botchainMainnet.id;
   const isBohr = chainId === bohrTestnet.id;
   const isSepolia = chainId === sepolia.id;
   const isHardhat = chainId === 31337;
-  const isCorrectNetwork = isBohr || isSepolia || isHardhat;
+  const isCorrectNetwork = isBotchain || isBohr || isSepolia || isHardhat;
 
-  const handleAddBohrNetwork = async () => {
+  const handleAddNetwork = async (chain: typeof botchainMainnet) => {
     const eth = (window as any).ethereum;
     if (eth?.request) {
       try {
@@ -21,16 +22,16 @@ export const Navbar: React.FC = () => {
           method: 'wallet_addEthereumChain',
           params: [
             {
-              chainId: `0x${bohrTestnet.id.toString(16)}`,
-              chainName: bohrTestnet.name,
-              nativeCurrency: bohrTestnet.nativeCurrency,
-              rpcUrls: bohrTestnet.rpcUrls.default.http,
-              blockExplorerUrls: [bohrTestnet.blockExplorers.default.url],
+              chainId: `0x${chain.id.toString(16)}`,
+              chainName: chain.name,
+              nativeCurrency: chain.nativeCurrency,
+              rpcUrls: chain.rpcUrls.default.http,
+              blockExplorerUrls: [chain.blockExplorers?.default?.url].filter(Boolean) as string[],
             },
           ],
         });
       } catch (err) {
-        console.error('Failed to add Bohr network:', err);
+        console.error('Failed to add network:', err);
       }
     }
   };
@@ -62,15 +63,15 @@ export const Navbar: React.FC = () => {
 
         {/* Right: Network status & Wallet Connect */}
         <div className="flex items-center gap-2 sm:gap-3">
-          {/* Bohr Network Quick Add Helper (Desktop only) */}
-          {!isBohr && (
+          {/* BotChain Mainnet Quick Add Helper (Desktop only) */}
+          {!isBotchain && (
             <button
-              onClick={handleAddBohrNetwork}
-              title="Add Bohr Testnet (Chain ID 968) to MetaMask"
+              onClick={() => handleAddNetwork(botchainMainnet)}
+              title="Add BotChain Mainnet (Chain ID 677) to MetaMask"
               className="hidden xl:flex items-center gap-1.5 text-xs text-slate-400 hover:text-indigo-300 bg-slate-950/80 hover:bg-slate-950 border border-slate-800 hover:border-slate-700 px-3.5 py-2 rounded-xl transition-all shadow-sm"
             >
-              <ExternalLink className="w-3.5 h-3.5 text-indigo-400" />
-              <span>Add Bohr Testnet</span>
+              <ExternalLink className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Add BotChain Mainnet</span>
             </button>
           )}
 
@@ -81,15 +82,22 @@ export const Navbar: React.FC = () => {
                 <div className="flex items-center gap-1.5 sm:gap-2 bg-slate-950/80 border border-slate-800 px-2 sm:px-3 py-1.5 sm:py-2 rounded-xl text-[11px] sm:text-xs font-medium shadow-inner">
                   <span
                     className={`w-2 h-2 rounded-full ${
-                      isBohr
-                        ? 'bg-emerald-400 animate-pulse'
+                      isBotchain
+                        ? 'bg-emerald-400 animate-pulse shadow-emerald-400/50 shadow-[0_0_8px]'
+                        : isBohr
+                        ? 'bg-sky-400'
                         : isSepolia
                         ? 'bg-purple-400'
                         : 'bg-amber-400'
                     }`}
                   />
                   <span className="text-slate-300 font-mono text-[10px] sm:text-xs">
-                    {isBohr ? (
+                    {isBotchain ? (
+                      <>
+                        <span className="sm:hidden">BotChain</span>
+                        <span className="hidden sm:inline">BotChain (677)</span>
+                      </>
+                    ) : isBohr ? (
                       <>
                         <span className="sm:hidden">Bohr</span>
                         <span className="hidden sm:inline">Bohr (968)</span>
@@ -103,11 +111,11 @@ export const Navbar: React.FC = () => {
                 </div>
               ) : (
                 <button
-                  onClick={() => switchChain({ chainId: bohrTestnet.id })}
+                  onClick={() => switchChain({ chainId: botchainMainnet.id })}
                   className="flex items-center gap-1 bg-rose-500/10 border border-rose-500/30 text-rose-300 text-[11px] sm:text-xs px-2 sm:px-3 py-1.5 rounded-xl hover:bg-rose-500/20 transition-all font-medium animate-pulse"
                 >
                   <Globe className="w-3 h-3 text-rose-400" />
-                  <span className="hidden sm:inline">Switch to Bohr</span>
+                  <span className="hidden sm:inline">Switch to BotChain</span>
                   <span className="sm:hidden">Switch</span>
                 </button>
               )}

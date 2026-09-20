@@ -1,6 +1,6 @@
 {
-  "network": "bohr",
-  "chainId": "968",
+  "network": "botchain",
+  "chainId": "677",
   "contracts": {
     "DevToken": {
       "address": "0x223422aEAF60eb8Cf98D20AbA9AD463c585EbC5D",

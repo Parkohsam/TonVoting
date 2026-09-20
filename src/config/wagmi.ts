@@ -1,14 +1,14 @@
 import { createAppKit } from '@reown/appkit/react';
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi';
-import { bohrTestnet, sepolia, hardhat } from './chains';
+import { bohrTestnet, botchainMainnet, sepolia, hardhat } from './chains';
 import type { AppKitNetwork } from '@reown/appkit/networks';
 
 // Get projectId from environment or use a default fallback
 export const projectId =
   import.meta.env.VITE_REOWN_PROJECT_ID || 'b56e18d47c72ab683b10814fe9495694';
 
-// Supported networks list
-export const networks = [bohrTestnet, sepolia, hardhat] as [AppKitNetwork, ...AppKitNetwork[]];
+// Supported networks list - BotChain Mainnet (677) is primary
+export const networks = [botchainMainnet, bohrTestnet, sepolia, hardhat] as [AppKitNetwork, ...AppKitNetwork[]];
 
 // Setup Wagmi Adapter
 export const wagmiAdapter = new WagmiAdapter({
