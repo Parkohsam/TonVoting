@@ -117,6 +117,22 @@ export const App: React.FC = () => {
 
       {/* Main Content Area */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 pt-3 sm:pt-6 pb-16 space-y-6 sm:space-y-10">
+        {/* BOT Chain Ecosystem Hero Banner */}
+        <div className="overflow-hidden rounded-2xl border border-slate-800/80 shadow-2xl transition-all duration-300 hover:border-indigo-500/40 hover:shadow-indigo-500/10 group">
+          <a
+            href="https://www.botchain.ai/en/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block"
+          >
+            <img
+              src="/bot-chain-banner.png"
+              alt="Build the AI-Native Future with BOT Chain"
+              className="w-full h-auto object-cover rounded-2xl transition-transform duration-500 group-hover:scale-[1.008]"
+            />
+          </a>
+        </div>
+
         {/* Token Faucet & Balance Card */}
         <TokenFaucet />
 
