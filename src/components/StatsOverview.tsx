@@ -1,6 +1,6 @@
 import React from 'react';
 import { useChainId } from 'wagmi';
-import { botchainMainnet, bohrTestnet } from '../config/chains';
+import { botchainMainnet } from '../config/chains';
 import { Vote, CheckCircle, Clock, Network } from 'lucide-react';
 import type { ProposalData } from './ProposalCard';
 
@@ -15,8 +15,7 @@ export const StatsOverview: React.FC<StatsOverviewProps> = ({
 }) => {
   const chainId = useChainId();
   const isBotchain = chainId === botchainMainnet.id;
-  const isBohr = chainId === bohrTestnet.id;
-  const networkLabel = isBotchain ? 'BotChain / Mainnet' : isBohr ? 'Bohr / Testnet' : chainId === 31337 ? 'Localhost' : `Chain ${chainId}`;
+  const networkLabel = isBotchain ? 'BotChain / Mainnet' : `Chain ${chainId}`;
   const totalProposals = proposals.length;
   const activeProposals = statuses.filter((s) => s === 0).length;
   const passedProposals = statuses.filter((s) => s === 1).length;

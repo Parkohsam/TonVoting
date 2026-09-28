@@ -343,16 +343,16 @@ export const App: React.FC = () => {
               Gas Token: <strong className="text-purple-300">BOT / ETH</strong>
             </span>
             <a
-              href="https://scan.bohr.life/"
+              href="https://scan.botchain.ai/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1 text-indigo-400 hover:text-indigo-300 transition-colors"
+              className="flex items-center gap-1 text-emerald-400 hover:text-emerald-300 transition-colors"
             >
-              <span>BohrScan Explorer</span>
+              <span>BotScan Explorer</span>
               <ExternalLink className="w-3 h-3" />
             </a>
             <a
-              href="https://rpc.bohr.life"
+              href="https://rpc.botchain.ai"
               target="_blank"
               rel="noopener noreferrer"
               className="text-slate-400 hover:text-slate-300 transition-colors"

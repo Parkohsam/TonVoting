@@ -129,7 +129,7 @@ export const ProposalModal: React.FC<ProposalModalProps> = ({
               required
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              placeholder="e.g., Fund Bohr Ecosystem Developer Grant #1"
+              placeholder="e.g., BotChain Governance Proposal"
               className="w-full px-3.5 sm:px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition-colors text-xs sm:text-sm"
             />
           </div>
